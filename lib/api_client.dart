@@ -10,14 +10,14 @@ class ApiClient {
 
   final String baseUrl = 'https://www.omdbapi.com/?apikey=48d812d0&';
 
-  Future<void> findById(String id) async {
+  Future<Movie?> findById(String id) async {
     final http.Response response = await http.get(
       Uri.parse('${baseUrl}i=$id'),
     );
     if (response.statusCode == 200) {
       final Map<String, dynamic> json = jsonDecode(response.body);
-      final Movie movie = Movie.fromJson(json);
-      print(json);
+      return Movie.fromJson(json);
     }
+    return null;
   }
 }

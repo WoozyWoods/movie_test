@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_test/api_client.dart';
+import 'package:movie_test/screens/movie_screen.dart';
+import 'models/movie.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,8 +34,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() async {
-    await ApiClient().findById('tt0190332');
+  void _incrementCounter(BuildContext context) async {
+    final Movie? movie = await ApiClient().findById('tt0190332');
+
+    if (movie != null) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) => MovieScreen(movie),
+        ),
+      );
+    }
   }
 
   @override
@@ -57,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () => _incrementCounter(context),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
