@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:movie_test/models/movie.dart';
 
 class ApiClient {
   const ApiClient._();
@@ -15,6 +16,7 @@ class ApiClient {
     );
     if (response.statusCode == 200) {
       final Map<String, dynamic> json = jsonDecode(response.body);
+      final Movie movie = Movie.fromJson(json);
       print(json);
     }
   }
