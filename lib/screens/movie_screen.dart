@@ -11,6 +11,10 @@ class MovieScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isAboveSeven = movie.imdbRating != null &&
+        double.tryParse(movie.imdbRating!) != null &&
+        double.parse(movie.imdbRating!) >= 7;
+
     return Scaffold(
       body: SafeArea(
         child: Center(
