@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_test/api_client.dart';
-import 'package:movie_test/screens/movie_screen.dart';
-import 'models/movie.dart';
 import 'package:movie_test/screens/movie_list/ui/movie_list.dart';
 
 void main() {

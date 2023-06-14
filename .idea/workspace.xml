@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1b2ce7f-f63e-4517-b208-2bb207bcf5ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/screens/movie_list/bloc/movie_list_cubit.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/movie_list/bloc/movie_list_state.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/movie_list/ui/movie_list.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/api_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api_client.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/home_screen.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/movie_list/bloc/movie_list_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/movie_list/bloc/movie_list_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/movie_list/ui/movie_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/movie_list/ui/movie_list.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/movie_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/movie_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,5 +96,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/main.dart</url>
+          <line>16</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

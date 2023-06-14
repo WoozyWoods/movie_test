@@ -20,4 +20,29 @@ class ApiClient {
     }
     return null;
   }
+
+  Future<List<Movie>?> searchMovies(
+    String input, [
+    int? pageNumber,
+  ]) async {
+    final String pageString = pageNumber != null ? '&page=$pageNumber' : '';
+
+    final http.Response response = await http.get(
+      Uri.parse('${baseUrl}s=$input$pageString'),
+    );
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> json = jsonDecode(response.body);
+      final List<Map<String, dynamic>> listFromJson =
+          List<Map<String, dynamic>>.from(json['Search']);
+      final List<Movie> movies = List<Movie>.from(
+        listFromJson.map<Movie?>(
+          (Map<String, dynamic> json) => Movie.fromJson(json),
+        ),
+      );
+      return movies;
+    }
+
+    return null;
+  }
 }

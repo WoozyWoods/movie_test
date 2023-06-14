@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_test/models/movie.dart';
-import 'package:movie_test/models/movie.dart';
 import 'package:movie_test/assets/movieinfo_card.dart';
 import 'package:movie_test/assets/constants.dart';
 
@@ -119,9 +118,7 @@ class MovieScreen extends StatelessWidget {
                           Text(
                             movie.imdbRating ?? '',
                             style: TextStyle(
-                                color: movie.imdbRating != 7.0
-                                    ? Colors.green
-                                    : Colors.red,
+                                color: isAboveSeven ? Colors.green : Colors.red,
                                 fontSize: 21.0,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -130,9 +127,7 @@ class MovieScreen extends StatelessWidget {
                           ),
                           Icon(
                             Icons.thumb_up_alt,
-                            color: movie.imdbRating != 7.0
-                                ? Colors.green
-                                : Colors.red,
+                            color: isAboveSeven ? Colors.green : Colors.red,
                           ),
                         ],
                       ),
@@ -145,6 +140,8 @@ class MovieScreen extends StatelessWidget {
                       ),
                       MovieInfoCard(
                         movieDataText: movie.rated ?? '',
+                        textColors:
+                            movie.rated == 'R' ? Colors.red : Colors.white,
                       ),
                       SizedBox(
                         width: sizedBoxWidth,
