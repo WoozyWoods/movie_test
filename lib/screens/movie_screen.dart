@@ -94,12 +94,18 @@ class MovieScreen extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 15.0, right: 15.0, bottom: 8.0, top: 8.0),
-                      child: Text(
-                        movie.title ?? '',
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                      child: Container(
+                        width: 300,
+                        child: FittedBox(
+                          fit: BoxFit.fitWidth,
+                          child: Text(
+                            movie.title ?? '',
+                            style: TextStyle(
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -146,6 +152,7 @@ class MovieScreen extends StatelessWidget {
                       SizedBox(
                         width: sizedBoxWidth,
                       ),
+
                       MovieInfoCard(movieDataText: movie.genre ?? ''),
                     ],
                   ),

@@ -4,6 +4,7 @@ import 'package:movie_test/api_client.dart';
 import 'package:movie_test/screens/movie_list/bloc/movie_list_cubit.dart';
 import 'package:movie_test/screens/movie_screen.dart';
 import '../../../models/movie.dart';
+import 'package:movie_test/assets/constants.dart';
 
 class MovieList extends StatelessWidget {
   const MovieList({Key? key}) : super(key: key);
@@ -12,7 +13,10 @@ class MovieList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Search Movies'),
+        title: Center(
+          child: const Text('Search Movies'),
+        ),
+        backgroundColor: Colors.black12,
       ),
       body: SafeArea(
         child: BlocProvider<MovieListCubit>(
@@ -45,13 +49,19 @@ class _MovieList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextField(
-          controller: controller,
-          onEditingComplete: () async {
-            await context
-                .read<MovieListCubit>()
-                .searchMovies(controller.value.text);
-          },
+        Container(
+          color: Colors.white10,
+          child: TextField(
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.search),
+            ),
+            controller: controller,
+            onEditingComplete: () async {
+              await context
+                  .read<MovieListCubit>()
+                  .searchMovies(controller.value.text);
+            },
+          ),
         ),
         Expanded(
           child: BlocBuilder<MovieListCubit, MovieListState>(
@@ -84,10 +94,55 @@ class _MovieList extends StatelessWidget {
   }
 
   Widget _success(MovieListSuccess state) {
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 150,
+        crossAxisSpacing: 1,
+      ),
       itemBuilder: (BuildContext context, int index) {
         final Movie movie = state.movies[index];
-        return Text(movie.title ?? '');
+        return Align(
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            margin: EdgeInsets.all(10.0),
+            child: InkWell(
+              onTap: () {
+                _goToDetailScreen(context, movie.imdbID ?? '');
+              },
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: borderRadiusValue,
+                    child: Image(
+                      fit: BoxFit.fill,
+                      height: 280.0,
+                      image: NetworkImage(movie.poster ?? ''),
+                    ),
+                  ),
+                  Container(
+                    width: 200.0,
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        movie.title ?? '',
+                        style: TextStyle(fontSize: 20.0),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    movie.year ?? '',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
       },
       itemCount: state.movies.length,
     );
